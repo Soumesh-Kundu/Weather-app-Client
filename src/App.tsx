@@ -26,6 +26,19 @@ function App() {
   //initialization if server error
   const [error, setError] = useState<ErrorMessage>({ has: false });
   const socket = io(import.meta.env.VITE_BASE_URL);
+  let socketRetry=0
+  //retry to connect to server 
+  socket.on('connect',()=>{
+    if(!socket.connected && socketRetry<3){
+      socketRetry++
+      socket.connect()
+    }
+    else{
+      if(socket.connected) return;
+      toast.error("Couldn't Connect to server. Retry again.")
+      setError({has:true})
+    }
+  })
   //function for reposible for tracking geoLocations
   function getLocations() {
     if (navigator.geolocation) {

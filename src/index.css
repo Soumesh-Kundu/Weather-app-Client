@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* bg gradient for the app */
+.bg-gradient {
+  background: linear-gradient(
+    180deg,
+    rgb(46, 196, 255) 0%,
+    rgba(19, 153, 180, 1) 45%,
+    rgba(58, 191, 215, 1) 80%,
+    rgba(255, 255, 255, 1) 100%
+  );
+}
+
+/* tempate area */
+.grid-template {
+  grid-template-areas:
+    "location"
+    "temperature"
+    "conditon";
+}
+.area-conditon {
+  grid-area: "condtion";
+}
+.area-location {
+  grid-area: "location";
+}
+.area-temperature {
+  grid-area: "temperature";
+}
+/* day icon spin duration */
+.spin-duration{
+  animation-duration: 5s !important;
+}
+@media screen and (min-width: 800px) {
+  .grid-template{
+    grid-template-areas:
+      "location temperature"
+      "condition temperature";
+  }
+}
